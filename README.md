@@ -6,7 +6,8 @@
 ## Section 4: May 2025 Posts
 **Location:** Line ~290
 ```sql
--- REPLACE WITH YOUR SECTION 4 QUERY: [YOUR QUERY HERE] 
+-- REPLACE WITH YOUR SECTION 4 QUERY:
+[YOUR QUERY HERE] 
 -- END SECTION 4
 ```
 **Expected:** Posts from May 2025 with `pid, uid, content`

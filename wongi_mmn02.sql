@@ -14,6 +14,7 @@ delete from follow;
 delete from post;
 delete from users;
 
+-- Original users
 insert into users 
 values(1, 'alice', 'alice@example.com', 'pass1', 'photographer', 'israel'),
       (2, 'bob', 'bob@example.com', 'pass2', 'traveler', 'usa'),
@@ -24,6 +25,7 @@ values(1, 'alice', 'alice@example.com', 'pass1', 'photographer', 'israel'),
       (7, 'grace', 'grace@example.com', 'pass7', 'reader', 'uk'),
       (8, 'hank', 'hank@example.com', 'pass8', 'blogger', 'france');
 
+-- Original posts
 insert into post 
 values(101, 1, 'sunset in tel aviv', 'sun.jpg', to_date('5/5/2025', 'DD/MM/YYYY'), '18:30:00'),
       (102, 2, 'hiking the rockies', 'rockies.jpg', to_date('20/4/2025', 'DD/MM/YYYY'), '10:00:00'),
@@ -37,6 +39,7 @@ values(101, 1, 'sunset in tel aviv', 'sun.jpg', to_date('5/5/2025', 'DD/MM/YYYY'
       (110, 4, 'guitar tutorial', 'guitar.jpg', to_date('18/2/2025', 'DD/MM/YYYY'), '17:10:00'),
       (111, 3, 'city tour', 'oldcity.jpg', to_date('1/3/2025', 'DD/MM/YYYY'), '10:00:00');
 
+-- Original comments
 insert into comment 
 values(101, to_date('5/5/2025', 'DD/MM/YYYY'), '19:00:00', 2, 'beautiful!'),
       (101, to_date('5/5/2025', 'DD/MM/YYYY'), '19:05:00', 3, 'love the colors.'),
@@ -50,6 +53,7 @@ values(101, to_date('5/5/2025', 'DD/MM/YYYY'), '19:00:00', 2, 'beautiful!'),
       (109, to_date('6/5/2025', 'DD/MM/YYYY'), '12:10:00', 5, 'delicious.'),
       (110, to_date('19/2/2025', 'DD/MM/YYYY'), '18:00:00', 1, 'helpful tutorial.');
 
+-- Original likes
 insert into likes 
 values(1, 101, to_date('5/5/2025', 'DD/MM/YYYY'), '21:00:00'),
       (1, 102, to_date('21/3/2025', 'DD/MM/YYYY'), '14:05:00'),
@@ -62,9 +66,11 @@ values(1, 101, to_date('5/5/2025', 'DD/MM/YYYY'), '21:00:00'),
       (2, 105, to_date('15/3/2025', 'DD/MM/YYYY'), '09:00:00'),
       (2, 111, to_date('2/3/2025', 'DD/MM/YYYY'), '11:05:00');
 
+-- Original follows
 insert into follow 
 values(2, 1), (3, 1), (4, 1), (6, 1), (1, 2), (1, 3), (2, 3), (4, 2), (3, 4), (5, 4), (2, 6);
 
+-- Additional test data for various sections
 insert into comment values
 (102, to_date('21/4/2025', 'DD/MM/YYYY'), '14:30:00', 3, 'amazing!'),
 (102, to_date('21/4/2025', 'DD/MM/YYYY'), '14:45:00', 4, 'great photo!'),
@@ -80,95 +86,43 @@ insert into likes values
 (4, 104, to_date('1/5/2025', 'DD/MM/YYYY'), '16:00:00'),
 (4, 110, to_date('18/2/2025', 'DD/MM/YYYY'), '18:00:00');
 
+-- Additional users for section 8
 insert into users values
 (9, 'israel1', 'israel1@example.com', 'pass9', 'artist', 'israel'),
 (10, 'israel2', 'israel2@example.com', 'pass10', 'writer', 'israel');
 
 insert into follow values (7, 1), (7, 4), (7, 9);
 
--- ===============================================
--- SECTION 3: DATA INSERTION (PROVIDED)
--- ===============================================
-set datestyle to 'ISO, DMY';
-
--- Clear existing data (in case of re-run)
-delete from comment;
-delete from likes;
-delete from follow;
-delete from post;
-delete from users;
-
-insert into users 
-values(1, 'alice', 'alice@example.com', 'pass1', 'photographer', 'israel'),
-      (2, 'bob', 'bob@example.com', 'pass2', 'traveler', 'usa'),
-      (3, 'carol', 'carol@example.com', 'pass3', 'chef', 'italy'),
-      (4, 'david', 'david@example.com', 'pass4', 'musician', 'israel'),
-      (5, 'eve', 'eve@example.com', 'pass5', 'techie', 'canada'),
-      (6, 'frank', 'frank@example.com', 'pass6', 'gamer', 'japan'),
-      (7, 'grace', 'grace@example.com', 'pass7', 'reader', 'uk'),
-      (8, 'hank', 'hank@example.com', 'pass8', 'blogger', 'france');
-
-insert into post 
-values(101, 1, 'sunset in tel aviv', 'sun.jpg', to_date('5/5/2025', 'DD/MM/YYYY'), '18:30:00'),
-      (102, 2, 'hiking the rockies', 'rockies.jpg', to_date('20/4/2025', 'DD/MM/YYYY'), '10:00:00'),
-      (103, 3, 'best pasta recipe', 'pasta.jpg', to_date('22/4/2025', 'DD/MM/YYYY'), '12:15:00'),
-      (104, 4, 'new song release', 'song.jpg', to_date('1/5/2025', 'DD/MM/YYYY'), '15:45:00'),
-      (105, 1, 'morning coffee', 'coffee.jpg', to_date('15/3/2025', 'DD/MM/YYYY'), '08:20:00'),
-      (106, 5, 'tech trends 2025', 'tech.jpg', to_date('3/5/2025', 'DD/MM/YYYY'), '09:00:00'),
-      (107, 6, 'gaming marathon', 'game.jpg', to_date('25/4/2025', 'DD/MM/YYYY'), '21:40:00'),
-      (108, 2, 'cherry blossoms', 'sakura.jpg', to_date('4/5/2025', 'DD/MM/YYYY'), '07:50:00'),
-      (109, 3, 'street food adventures', 'street.jpg', to_date('6/5/2025', 'DD/MM/YYYY'), '11:00:00'),
-      (110, 4, 'guitar tutorial', 'guitar.jpg', to_date('18/2/2025', 'DD/MM/YYYY'), '17:10:00'),
-      (111, 3, 'city tour', 'oldcity.jpg', to_date('1/3/2025', 'DD/MM/YYYY'), '10:00:00');
-
-insert into comment 
-values(101, to_date('5/5/2025', 'DD/MM/YYYY'), '19:00:00', 2, 'beautiful!'),
-      (101, to_date('5/5/2025', 'DD/MM/YYYY'), '19:05:00', 3, 'love the colors.'),
-      (102, to_date('21/4/2025', 'DD/MM/YYYY'), '14:00:00', 1, 'awesome hike!'),
-      (102, to_date('22/4/2025', 'DD/MM/YYYY'), '16:00:00', 8, 'nice view.'),
-      (103, to_date('22/4/2025', 'DD/MM/YYYY'), '13:00:00', 5, 'yummy!'),
-      (104, to_date('2/5/2025', 'DD/MM/YYYY'), '10:15:00', 6, 'great beat!'),
-      (106, to_date('3/5/2025', 'DD/MM/YYYY'), '11:30:00', 2, 'interesting insights.'),
-      (107, to_date('26/4/2025', 'DD/MM/YYYY'), '22:00:00', 4, 'good luck!'),
-      (108, to_date('4/5/2025', 'DD/MM/YYYY'), '08:10:00', 3, 'so pretty!'),
-      (109, to_date('6/5/2025', 'DD/MM/YYYY'), '12:10:00', 5, 'delicious.'),
-      (110, to_date('19/2/2025', 'DD/MM/YYYY'), '18:00:00', 1, 'helpful tutorial.');
-
-insert into likes 
-values(1, 101, to_date('5/5/2025', 'DD/MM/YYYY'), '21:00:00'),
-      (1, 102, to_date('21/3/2025', 'DD/MM/YYYY'), '14:05:00'),
-      (1, 103, to_date('22/4/2025', 'DD/MM/YYYY'), '14:10:00'),
-      (1, 104, to_date('2/5/2025', 'DD/MM/YYYY'), '11:00:00'),
-      (1, 105, to_date('15/3/2025', 'DD/MM/YYYY'), '09:05:00'),
-      (1, 111, to_date('2/3/2025', 'DD/MM/YYYY'), '11:00:00'),
-      (2, 101, to_date('5/5/2025', 'DD/MM/YYYY'), '18:50:00'),
-      (2, 103, to_date('22/4/2025', 'DD/MM/YYYY'), '12:30:00'),
-      (2, 105, to_date('15/3/2025', 'DD/MM/YYYY'), '09:00:00'),
-      (2, 111, to_date('2/3/2025', 'DD/MM/YYYY'), '11:05:00');
-
-insert into follow 
-values(2, 1), (3, 1), (4, 1), (6, 1), (1, 2), (1, 3), (2, 3), (4, 2), (3, 4), (5, 4), (2, 6);
-
-insert into comment values
-(102, to_date('21/4/2025', 'DD/MM/YYYY'), '14:30:00', 3, 'amazing!'),
-(102, to_date('21/4/2025', 'DD/MM/YYYY'), '14:45:00', 4, 'great photo!'),
-(102, to_date('21/4/2025', 'DD/MM/YYYY'), '15:00:00', 5, 'wonderful!');
-
-insert into likes values
-(5, 106, to_date('3/5/2025', 'DD/MM/YYYY'), '12:00:00'),
-(6, 107, to_date('25/4/2025', 'DD/MM/YYYY'), '23:00:00');
-
-insert into follow values (4, 4);
-
-insert into likes values
-(4, 104, to_date('1/5/2025', 'DD/MM/YYYY'), '16:00:00'),
-(4, 110, to_date('18/2/2025', 'DD/MM/YYYY'), '18:00:00');
-
+-- NEW USERS AND DATA FOR SECTION 10 TESTING
 insert into users values
-(9, 'israel1', 'israel1@example.com', 'pass9', 'artist', 'israel'),
-(10, 'israel2', 'israel2@example.com', 'pass10', 'writer', 'israel');
+(11, 'wongi', 'daniel@wongi.io', 'pass11', 'developer', 'korea'),
+(12, 'daniel', 'daniel@tech.com', 'pass12', 'designer', 'germany'), 
+(13, 'sara', 'sara@art.com', 'pass13', 'artist', 'spain'),
+(14, 'mike', 'mike@sports.com', 'pass14', 'coach', 'australia'),
+(15, 'lisa', 'lisa@travel.com', 'pass15', 'blogger', 'brazil');
 
-insert into follow values (7, 1), (7, 4), (7, 9);
+-- New posts with "city" content for section 10
+insert into post values
+(112, 12, 'exploring the city center', 'city1.jpg', to_date('10/5/2025', 'DD/MM/YYYY'), '14:00:00'),
+(113, 13, 'city lights photography', 'city2.jpg', to_date('12/5/2025', 'DD/MM/YYYY'), '20:30:00'),
+(114, 15, 'best city restaurants guide', 'city3.jpg', to_date('15/5/2025', 'DD/MM/YYYY'), '12:45:00');
+
+-- Additional posts (without "city") to test the logic
+insert into post values
+(115, 12, 'morning workout routine', 'workout.jpg', to_date('8/5/2025', 'DD/MM/YYYY'), '07:00:00'),
+(116, 13, 'sunset painting session', 'sunset.jpg', to_date('11/5/2025', 'DD/MM/YYYY'), '18:00:00');
+
+-- Follow relationships for section 10 testing
+insert into follow values
+(11, 12),  -- wongi follows daniel
+(11, 13),  -- wongi follows sara  
+(14, 15);  -- mike follows lisa (only one person)
+
+-- Likes for city posts (section 10)
+insert into likes values
+(11, 112, to_date('10/5/2025', 'DD/MM/YYYY'), '15:00:00'),  -- wongi likes daniel's city post
+(11, 113, to_date('12/5/2025', 'DD/MM/YYYY'), '21:00:00'),  -- wongi likes sara's city post
+(14, 114, to_date('15/5/2025', 'DD/MM/YYYY'), '13:00:00');  -- mike likes lisa's city post
 
 -- ===============================================
 -- COMPLETE DATA VALIDATION - FINAL VERSION
@@ -202,7 +156,12 @@ begin
     (7, 'grace', 'grace@example.com', 'pass7', 'reader', 'uk'),
     (8, 'hank', 'hank@example.com', 'pass8', 'blogger', 'france'),
     (9, 'israel1', 'israel1@example.com', 'pass9', 'artist', 'israel'),
-    (10, 'israel2', 'israel2@example.com', 'pass10', 'writer', 'israel');
+    (10, 'israel2', 'israel2@example.com', 'pass10', 'writer', 'israel'),
+    (11, 'wongi', 'daniel@wongi.io', 'pass11', 'developer', 'korea'),
+    (12, 'daniel', 'daniel@tech.com', 'pass12', 'designer', 'germany'), 
+    (13, 'sara', 'sara@art.com', 'pass13', 'artist', 'spain'),
+    (14, 'mike', 'mike@sports.com', 'pass14', 'coach', 'australia'),
+    (15, 'lisa', 'lisa@travel.com', 'pass15', 'blogger', 'brazil');
     
     select count(*) into temp_count from (
         (select * from expected_users except select * from users)
@@ -212,7 +171,7 @@ begin
     
     if temp_count = 0 then
         tests_passed := tests_passed + 1;
-        raise notice '✅ PASSED: Users table - exact match (10 users)';
+        raise notice '✅ PASSED: Users table - exact match (15 users)';
     else
         raise notice '❌ FAILED: Users table data mismatch';
     end if;
@@ -236,7 +195,12 @@ begin
     (108, 2, 'cherry blossoms', 'sakura.jpg', '2025-05-04', '07:50:00'),
     (109, 3, 'street food adventures', 'street.jpg', '2025-05-06', '11:00:00'),
     (110, 4, 'guitar tutorial', 'guitar.jpg', '2025-02-18', '17:10:00'),
-    (111, 3, 'city tour', 'oldcity.jpg', '2025-03-01', '10:00:00');
+    (111, 3, 'city tour', 'oldcity.jpg', '2025-03-01', '10:00:00'),
+    (112, 12, 'exploring the city center', 'city1.jpg', '2025-05-10', '14:00:00'),
+    (113, 13, 'city lights photography', 'city2.jpg', '2025-05-12', '20:30:00'),
+    (114, 15, 'best city restaurants guide', 'city3.jpg', '2025-05-15', '12:45:00'),
+    (115, 12, 'morning workout routine', 'workout.jpg', '2025-05-08', '07:00:00'),
+    (116, 13, 'sunset painting session', 'sunset.jpg', '2025-05-11', '18:00:00');
     
     select count(*) into temp_count from (
         (select * from expected_posts except select * from post)
@@ -246,7 +210,7 @@ begin
     
     if temp_count = 0 then
         tests_passed := tests_passed + 1;
-        raise notice '✅ PASSED: Post table - exact match (11 posts)';
+        raise notice '✅ PASSED: Post table - exact match (16 posts)';
     else
         raise notice '❌ FAILED: Post table data mismatch';
     end if;
@@ -310,7 +274,10 @@ begin
     (5, 106, '2025-05-03', '12:00:00'),
     (6, 107, '2025-04-25', '23:00:00'),
     (4, 104, '2025-05-01', '16:00:00'),
-    (4, 110, '2025-02-18', '18:00:00');
+    (4, 110, '2025-02-18', '18:00:00'),
+    (11, 112, '2025-05-10', '15:00:00'),
+    (11, 113, '2025-05-12', '21:00:00'),
+    (14, 114, '2025-05-15', '13:00:00');
     
     select count(*) into temp_count from (
         (select * from expected_likes except select * from likes)
@@ -320,7 +287,7 @@ begin
     
     if temp_count = 0 then
         tests_passed := tests_passed + 1;
-        raise notice '✅ PASSED: Likes table - exact match (14 likes)';
+        raise notice '✅ PASSED: Likes table - exact match (17 likes)';
     else
         raise notice '❌ FAILED: Likes table data mismatch';
     end if;
@@ -335,7 +302,8 @@ begin
     create temp table expected_follows (fuid int, uid int);
     insert into expected_follows values
     (2, 1), (3, 1), (4, 1), (6, 1), (1, 2), (1, 3), (2, 3), (4, 2), 
-    (3, 4), (5, 4), (2, 6), (7, 1), (7, 4), (7, 9), (4, 4);
+    (3, 4), (5, 4), (2, 6), (7, 1), (7, 4), (7, 9), (4, 4),
+    (11, 12), (11, 13), (14, 15);
     
     select count(*) into temp_count from (
         (select * from expected_follows except select * from follow)
@@ -345,7 +313,7 @@ begin
     
     if temp_count = 0 then
         tests_passed := tests_passed + 1;
-        raise notice '✅ PASSED: Follow table - exact match (15 follows)';
+        raise notice '✅ PASSED: Follow table - exact match (18 follows)';
     else
         raise notice '❌ FAILED: Follow table data mismatch';
     end if;
@@ -363,11 +331,16 @@ begin
     (104, 4, 'new song release'),
     (106, 5, 'tech trends 2025'),
     (108, 2, 'cherry blossoms'),
-    (109, 3, 'street food adventures');
+    (109, 3, 'street food adventures'),
+    (112, 12, 'exploring the city center'),
+    (113, 13, 'city lights photography'),
+    (114, 15, 'best city restaurants guide'),
+    (115, 12, 'morning workout routine'),
+    (116, 13, 'sunset painting session');
     
     create temp table actual_section4 as
 	-- REPLACE WITH YOUR SECTION 4 QUERY:
-
+    [YOUR QUERY HERE] 
     -- END SECTION 4
     
     select count(*) into temp_count from (
@@ -391,11 +364,15 @@ begin
     raise notice '-------------------------------';
     
     create temp table expected_section5 (uid int, name text, country text);
-    insert into expected_section5 values (3, 'carol', 'italy');
+    insert into expected_section5 values 
+    (3, 'carol', 'italy'),
+    (12, 'daniel', 'germany'),
+    (13, 'sara', 'spain'),
+    (15, 'lisa', 'brazil');
     
     create temp table actual_section5 as
 	-- REPLACE WITH YOUR SECTION 5 QUERY:
-
+    [YOUR QUERY HERE] 
     -- END SECTION 5
     
     select count(*) into temp_count from (
@@ -423,7 +400,7 @@ begin
     
     create temp table actual_section6 as
 	-- REPLACE WITH YOUR SECTION 6 QUERY:
-
+    [YOUR QUERY HERE] 
     -- END SECTION 6
     
     select count(*) into temp_count from (
@@ -451,7 +428,7 @@ begin
     
     create temp table actual_section7 as
 	-- REPLACE WITH YOUR SECTION 7 QUERY:
-
+    [YOUR QUERY HERE] 
     -- END SECTION 7
     
     select count(*) into temp_count from (
@@ -479,7 +456,7 @@ begin
     
     create temp table actual_section8 as
 	-- REPLACE WITH YOUR SECTION 8 QUERY:
-
+    [YOUR QUERY HERE] 
     -- END SECTION 8
     
     select count(*) into temp_count from (
@@ -497,17 +474,17 @@ begin
     
     drop table expected_section8, actual_section8;
     
-    -- TEST 11: SECTION 9 QUERY
+    -- TEST 11: SECTION 9 QUERY - FIXED TO RETURN ONLY UID
     raise notice '';
     raise notice 'TEST 11: Section 9 Query Results';
     raise notice '--------------------------------';
     
-    create temp table expected_section9 (uid int, name text);
-    insert into expected_section9 values (1, 'alice');
+    create temp table expected_section9 (uid int);
+    insert into expected_section9 values (1);
     
     create temp table actual_section9 as
     -- REPLACE WITH YOUR SECTION 9 QUERY:
-	
+    [YOUR QUERY HERE] 
     -- END SECTION 9
     
     select count(*) into temp_count from (
@@ -525,18 +502,17 @@ begin
     
     drop table expected_section9, actual_section9;
     
-    -- TEST 12: SECTION 10 QUERY
+    -- TEST 12: SECTION 10 QUERY - UPDATED FOR NEW LOGIC
     raise notice '';
     raise notice 'TEST 12: Section 10 Query Results';
     raise notice '---------------------------------';
     
-    create temp table expected_section10 (fuid int);
-    insert into expected_section10 values (1), (2);
-    
+    create temp table expected_section10 (uid int);
+    insert into expected_section10 values (11), (14);
     
     create temp table actual_section10 as
     -- REPLACE WITH YOUR SECTION 10 QUERY:
-	
+	[YOUR QUERY HERE] 
     -- END SECTION 10
     
     select count(*) into temp_count from (
